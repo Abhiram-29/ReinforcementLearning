@@ -6,12 +6,12 @@ env = gymnasium.make("CartPole-v1")
 
 t1 = time.time()
 model = PPO("MlpPolicy", env, verbose=0, device="cuda")
-model.learn(total_timesteps=10_000_000)
+model.learn(total_timesteps=10_000_0)
 print(f"Time with cuda : {time.time()-t1:.2f}s")
 
 t1 = time.time()
 model = PPO("MlpPolicy", env, verbose=0, device="cpu")
-model.learn(total_timesteps=10_000_000)
+model.learn(total_timesteps=10_000_0)
 print(f"Time with cpu : {time.time()-t1:.2f}s")
 
 env.close()
