@@ -1,6 +1,5 @@
 import gymnasium as gym
 from stable_baselines3 import PPO
-from icecream import ic
 env = gym.make("LunarLander-v2", render_mode="human")
 
 models_dir = "models/PPO"
@@ -9,14 +8,14 @@ model = PPO.load(model_path,env=env)
 venv = model.get_env()
 obs = venv.reset()
 
-ic(venv.reset())
 
 done = False
 
-while not done:
-    action, _ = model.predict(obs)
-    obs, rewards, done, info = venv.step(action)
-    ic(obs,done)
-    venv.render()
+for i in range(5):
+    done = False
+    while not done:
+        action, _ = model.predict(obs)
+        obs, rewards, done, info = venv.step(action)
+        venv.render()
 venv.close()
 env.close()
